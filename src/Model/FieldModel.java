@@ -1,32 +1,20 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package Model;
 
-/**
- *
- * @author Usuario
- */
+import Controller.*;
+
 public class FieldModel {
-    
-    // Field = MOdel.getField
-    
-    /*Objeto ubicar fila*/
-    //Tomar de la coleccion el Indice X,y
-    //a este objeto seleccionarle la columna y Fila x,y 
-    //Si esta ocupada rechazar
-    //Si no esta ocupada poner la marca de el jugador
-    //Y Pasar a siguiente turno
-    
-    public void changeSpot (int x, int y, boolean symbol){
-        if (x,y>0 && x,y<4){
-        //Ubicar simbolo
-        //comprobar si esta ocupado
-        //cambiar simbolo
-        //Establecer como ocupado
-        return;
+
+    boolean field[][];
+
+    public FieldModel() {
+        field = new boolean[3][3];
+    }
+
+    public void setSpot(int x, int y, boolean player) {
+        if (field[x][y] == true || field[x][y] == false) {
+        } else {
+            field[x][y] = player;
         }
-        return ;
+        //cambiar el turno
     }
 }

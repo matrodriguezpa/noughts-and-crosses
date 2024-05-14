@@ -1,17 +1,20 @@
 package Main;
 
-import java.util.Scanner;
+import Model.*;
+import Controller.*;
+import View.*;
 
 public class Main {
 
     public static void main(String[] args) {
 
-        Scanner sc = new Scanner(System.in);
+        Model model = new Model();
+        View view = new View();
+        Controller controller = new Controller();
 
-        int a = sc.nextInt();
-        int b = sc.nextInt();
-
-        System.out.println("The sum result is "+a+" and "+b);
+        controller.startGame(view,model);
+        
+        System.out.println("Game started");
 
     }
 
