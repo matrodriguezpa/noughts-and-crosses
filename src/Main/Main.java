@@ -10,9 +10,9 @@ public class Main {
 
         Model model = new Model();
         View view = new View();
-        Controller controller = new Controller();
+        Controller controller = new Controller(view,model);
 
-        controller.startGame(view,model);
+        controller.startGame();
         
         System.out.println("Game started");
 
