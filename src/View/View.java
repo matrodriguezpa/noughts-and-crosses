@@ -1,4 +1,3 @@
-
 package View;
 
 public class View extends javax.swing.JFrame {

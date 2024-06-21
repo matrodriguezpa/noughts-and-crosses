@@ -1,8 +1,8 @@
 package Main;
 
 import Model.*;
-import Controller.*;
 import View.*;
+import Controller.*;
 
 public class Main {
 
@@ -10,10 +10,10 @@ public class Main {
 
         Model model = new Model();
         View view = new View();
-        Controller controller = new Controller(view,model);
+        Controller controller = new Controller(view, model);
 
         controller.startGame();
-        
+
         System.out.println("Game started");
 
     }

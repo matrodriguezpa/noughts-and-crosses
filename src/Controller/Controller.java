@@ -14,27 +14,33 @@ public class Controller {
         this.view = view;
         this.model = model;
         this.view.jButton1.addActionListener(Actionlistener);
-        this.view.jButton2.addActionListener(Actionlistener2);
+    }
+    
+    // SEPARAR ESTE CODIGO EN SOLO METOOS DE MODEL Y VIEW
+    public void setX(int FielPositionX, int FielPositionY, int SpotPositionX, int SpotPositionY) {
+        //para que el primer turno o un turno indefinido sea donde ubique el jugador,
+        //setspot(BUtton.getposition());
+
+        //Se ubica el simbolo en el boton y su modelo correspondiente
+        //si el spot ya esta ocupado no cambiara el turno ni el spot y muestra el mensaje
+        if (model.getFiel(FielPositionX, FielPositionY)
+                .getSpot(SpotPositionX, SpotPositionY) == 0) {
+            model.getFiel(FielPositionX, FielPositionY)
+                    .setSpot(SpotPositionX, SpotPositionY, model.getTurnInt());
+            view.jButton1.setText(model.getTurnString());
+            model.setNextTurn();
+
+        //cambiar ubicacion basada en la anterior
+            model.setNextTurn();
+        } else {
+            System.out.println("Spot already occupied");
+        }
     }
 
-    
     // cada listener utiliza las funciones de model 
     //para cambiar los datos en model y actualizar el view
     private final ActionListener Actionlistener = e -> {
-        //si el spot ya esta ocupado no cambiara el turno
-        if (model.getFiel(1, 1).getSpot(1,1) == 0){
-        model.getFiel(1, 1).setSpot(1, 1,model.getTurnInt());
-        view.jButton1.setText(model.getTurnString());
-        model.setNextTurn();
-        }
-    };
-    private final ActionListener Actionlistener2 = e -> {
-        //si el spot ya esta ocupado no cambiara el turno
-        if (model.getFiel(1, 1).getSpot(1,2) == 0){
-        model.getFiel(1, 1).setSpot(1, 1,model.getTurnInt());
-        view.jButton2.setText(model.getTurnString());
-        model.setNextTurn();
-        }
+        Controller.setX(1, 1, 1, 1);
     };
 
     public void startGame() {
