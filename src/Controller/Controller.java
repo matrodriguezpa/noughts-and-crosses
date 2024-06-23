@@ -40,7 +40,7 @@ public class Controller {
     // cada listener utiliza las funciones de model 
     //para cambiar los datos en model y actualizar el view
     private final ActionListener Actionlistener = e -> {
-        Controller.setX(1, 1, 1, 1);
+        //Controller.setX(1, 1, 1, 1);
     };
 
     public void startGame() {
