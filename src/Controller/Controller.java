@@ -17,22 +17,22 @@ public class Controller {
         this.model = model;
     }
 
-    public static void setSpotAsValue(JButton jbutton, int FieldPositionY, int FieldPositionX, int SpotPositionY, int SpotPositionX) {
+    public static void setSpotAsValue(JButton jbutton, int FieldPositionX, int FieldPositionY, int SpotPositionX, int SpotPositionY) {
 
         //Se ubica el simbolo en el boton y su modelo correspondiente
-        Field selectedField = model.getFiel(FieldPositionY, FieldPositionX);
-        int selectedSpot = selectedField.getSpot(SpotPositionY, SpotPositionX);
+        Field selectedField = model.getFiel(FieldPositionX, FieldPositionY);
+        int selectedSpot = selectedField.getSpot(SpotPositionX, SpotPositionY);
 
         //Si el turno es el primero, se pone donde sea
         if (Model.getTurnAsInt() == 0) {
             System.out.println("Primer turno, se ubica en donde sea.");
             if (selectedSpot == 0) {
                 Controller.jbutton = jbutton;
-                selectedField.setSpot(SpotPositionY, SpotPositionX, model.getTurnAsInt());
+                selectedField.setSpot(SpotPositionX, SpotPositionY, model.getTurnAsInt());
                 Controller.jbutton.setText(model.getTurnAsString());
                 Controller.jbutton.setBackground(Color.RED);
 
-                model.setNextPosition(FieldPositionY, FieldPositionX, SpotPositionY, SpotPositionX);
+                model.setNextPosition(FieldPositionX, FieldPositionY, SpotPositionX, SpotPositionY);
                 model.setNextTurn();
             } else {
                 //si el spot ya esta ocupado no cambiara el turno ni el spot y muestra el mensaje
@@ -43,9 +43,9 @@ public class Controller {
             selectedField = model.getFiel(previusPosition[2], previusPosition[3]);
 
             //Si la posicion anterior no coincide con el nuevo Field, rechazar.
-            if (previusPosition[2] == FieldPositionY && previusPosition[3] == FieldPositionX) {
+            if (previusPosition[2] == FieldPositionX && previusPosition[3] == FieldPositionY) {
                 Controller.jbutton = jbutton;
-                selectedField.setSpot(SpotPositionY, SpotPositionX, model.getTurnAsInt());
+                selectedField.setSpot(SpotPositionX, SpotPositionY, model.getTurnAsInt());
                 Controller.jbutton.setText(model.getTurnAsString());
                 Controller.jbutton.setBackground(Color.RED);
             } else {
@@ -57,9 +57,9 @@ public class Controller {
             selectedField = model.getFiel(previusPosition[2], previusPosition[3]);
 
             //Si la posicion anterior no coincide con el nuevo Field, rechazar.
-            if (previusPosition[2] == FieldPositionY && previusPosition[3] == FieldPositionX) {
+            if (previusPosition[2] == FieldPositionX && previusPosition[3] == FieldPositionY) {
                 Controller.jbutton = jbutton;
-                selectedField.setSpot(SpotPositionY, SpotPositionX, model.getTurnAsInt());
+                selectedField.setSpot(SpotPositionX, SpotPositionY, model.getTurnAsInt());
                 Controller.jbutton.setText(model.getTurnAsString());
                 Controller.jbutton.setBackground(Color.BLUE);
             } else {
