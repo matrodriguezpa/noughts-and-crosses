@@ -2,54 +2,80 @@ package Controller;
 
 import Model.*;
 import View.*;
-import java.awt.event.ActionListener;
+import java.awt.Color;
+import javax.swing.JButton;
 
 public class Controller {
 
-    Model model;
-    View view;
-    boolean win;
+    private static Model model;
+    private static View view;
+    private static JButton jbutton;
+    private static boolean win;
 
     public Controller(View view, Model model) {
         this.view = view;
         this.model = model;
-        this.view.jButton1.addActionListener(Actionlistener);
     }
-    
-    // SEPARAR ESTE CODIGO EN SOLO METOOS DE MODEL Y VIEW
-    public void setX(int FielPositionX, int FielPositionY, int SpotPositionX, int SpotPositionY) {
-        //para que el primer turno o un turno indefinido sea donde ubique el jugador,
-        //setspot(BUtton.getposition());
+
+    public static void setSpotAsValue(JButton jbutton, int FieldPositionY, int FieldPositionX, int SpotPositionY, int SpotPositionX) {
 
         //Se ubica el simbolo en el boton y su modelo correspondiente
-        //si el spot ya esta ocupado no cambiara el turno ni el spot y muestra el mensaje
-        if (model.getFiel(FielPositionX, FielPositionY)
-                .getSpot(SpotPositionX, SpotPositionY) == 0) {
-            model.getFiel(FielPositionX, FielPositionY)
-                    .setSpot(SpotPositionX, SpotPositionY, model.getTurnInt());
-            view.jButton1.setText(model.getTurnString());
-            model.setNextTurn();
+        Field selectedField = model.getFiel(FieldPositionY, FieldPositionX);
+        int selectedSpot = selectedField.getSpot(SpotPositionY, SpotPositionX);
 
-        //cambiar ubicacion basada en la anterior
-            model.setNextTurn();
-        } else {
-            System.out.println("Spot already occupied");
+        //Si el turno es el primero, se pone donde sea
+        if (Model.getTurnAsInt() == 0) {
+            System.out.println("Primer turno, se ubica en donde sea.");
+            if (selectedSpot == 0) {
+                Controller.jbutton = jbutton;
+                selectedField.setSpot(SpotPositionY, SpotPositionX, model.getTurnAsInt());
+                Controller.jbutton.setText(model.getTurnAsString());
+                Controller.jbutton.setBackground(Color.RED);
+
+                model.setNextPosition(FieldPositionY, FieldPositionX, SpotPositionY, SpotPositionX);
+                model.setNextTurn();
+            } else {
+                //si el spot ya esta ocupado no cambiara el turno ni el spot y muestra el mensaje
+                System.out.println("Spot already occupied");
+            }
+        } else if (Model.getTurnAsInt() == 1 || Model.getTurnAsInt() == 2) {
+            int[] previusPosition = model.getPreviusPosition();
+            selectedField = model.getFiel(previusPosition[2], previusPosition[3]);
+
+            //Si la posicion anterior no coincide con el nuevo Field, rechazar.
+            if (previusPosition[2] == FieldPositionY && previusPosition[3] == FieldPositionX) {
+                Controller.jbutton = jbutton;
+                selectedField.setSpot(SpotPositionY, SpotPositionX, model.getTurnAsInt());
+                Controller.jbutton.setText(model.getTurnAsString());
+                Controller.jbutton.setBackground(Color.RED);
+            } else {
+                System.out.println("Invalid Spot, select the indicated space.");
+            }
+
+        } else if (Model.getTurnAsInt() == 3 || Model.getTurnAsInt() == 4) {
+            int[] previusPosition = model.getPreviusPosition();
+            selectedField = model.getFiel(previusPosition[2], previusPosition[3]);
+
+            //Si la posicion anterior no coincide con el nuevo Field, rechazar.
+            if (previusPosition[2] == FieldPositionY && previusPosition[3] == FieldPositionX) {
+                Controller.jbutton = jbutton;
+                selectedField.setSpot(SpotPositionY, SpotPositionX, model.getTurnAsInt());
+                Controller.jbutton.setText(model.getTurnAsString());
+                Controller.jbutton.setBackground(Color.BLUE);
+            } else {
+                System.out.println("Invalid Spot, select the indicated space.");
+            }
         }
+
     }
 
-    // cada listener utiliza las funciones de model 
-    //para cambiar los datos en model y actualizar el view
-    private final ActionListener Actionlistener = e -> {
-        //Controller.setX(1, 1, 1, 1);
-    };
-
     public void startGame() {
+        System.out.println("Game started.");
         view.setVisible(true);
     }
 
-    public boolean setWin() {
-        win = true;
-        return win;
+    public void setWin() {
+        Controller.win = true;
     }
 
     public void setSpot() {

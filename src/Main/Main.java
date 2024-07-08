@@ -14,7 +14,6 @@ public class Main {
 
         controller.startGame();
 
-        System.out.println("Game started");
 
     }
 
