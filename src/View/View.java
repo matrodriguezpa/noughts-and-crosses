@@ -1,5 +1,7 @@
 package View;
 
+import Controller.Controller;
+
 public class View extends javax.swing.JFrame {
     
     public View() {
@@ -174,6 +176,12 @@ public class View extends javax.swing.JFrame {
         getContentPane().add(jPanel3);
 
         jPanel4.setLayout(new java.awt.GridLayout(3, 3));
+
+        jButton28.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton28ActionPerformed(evt);
+            }
+        });
         jPanel4.add(jButton28);
         jPanel4.add(jButton29);
         jPanel4.add(jButton30);
@@ -291,7 +299,8 @@ public class View extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        // TODO add your handling code here:
+        Controller.setSpotAsValue(jButton4,1,1,1,2);
+        System.out.println("Button(1,1,1,2) Selected.");
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton13ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton13ActionPerformed
@@ -327,8 +336,14 @@ public class View extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton76ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
+        Controller.setSpotAsValue(jButton1,1,1,1,1);
+        System.out.println("Button(1,1,1,1) Selected.");
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton28ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton28ActionPerformed
+        Controller.setSpotAsValue(jButton28,1,2,1,1);
+        System.out.println("Button(1,2,1,1) Selected.");
+    }//GEN-LAST:event_jButton28ActionPerformed
 
     public static void main(String args[]) {
         java.awt.EventQueue.invokeLater(new Runnable() {
