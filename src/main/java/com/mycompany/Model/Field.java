@@ -1,4 +1,4 @@
-package Model;
+package com.mycompany.Model;
 
 public class Field {
 
@@ -6,9 +6,9 @@ public class Field {
 
     public Field() {
         field = new int[3][3];
-        
-        for (int i = 0; i < field.length-1; i++) {
-            for (int j = 0; j < field[j].length-1; j++) {
+
+        for (int i = 0; i < field.length - 1; i++) {
+            for (int j = 0; j < field[j].length - 1; j++) {
                 field[i][j] = 0;
             }
         }

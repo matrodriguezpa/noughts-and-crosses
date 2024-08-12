@@ -1,6 +1,6 @@
-package View;
+package com.mycompany.View;
 
-import Controller.Controller;
+import com.mycompany.Controller.Controller;
 
 public class View extends javax.swing.JFrame {
     

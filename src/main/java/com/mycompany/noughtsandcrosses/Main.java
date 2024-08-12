@@ -1,8 +1,8 @@
-package Main;
+package com.mycompany.noughtsandcrosses;
 
-import Model.*;
-import View.*;
-import Controller.*;
+import com.mycompany.Controller.Controller;
+import com.mycompany.Model.Model;
+import com.mycompany.View.View;
 
 public class Main {
 

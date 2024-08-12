@@ -1,7 +1,8 @@
-package Controller;
+package com.mycompany.Controller;
 
-import Model.*;
-import View.*;
+import com.mycompany.Model.Field;
+import com.mycompany.Model.Model;
+import com.mycompany.View.View;
 import java.awt.Color;
 import javax.swing.JButton;
 

@@ -1,4 +1,4 @@
-package Model;
+package com.mycompany.Model;
 
 public class Model {
 
@@ -15,8 +15,6 @@ public class Model {
             }
         }
     }
-    
-    
 
     //getter para el turno.
     public static int getTurnAsInt() {
@@ -49,8 +47,8 @@ public class Model {
         return field;
     }
 
-    public void setNextPosition(int X, int Y,int x,int y) {
-        int[] newPreviusPosition = {X,Y,x,y};
+    public void setNextPosition(int X, int Y, int x, int y) {
+        int[] newPreviusPosition = {X, Y, x, y};
         Model.previusPosition = newPreviusPosition;
     }
 
